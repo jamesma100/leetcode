@@ -2,7 +2,7 @@
 # max(rob, no rob)
 
 class Solution:
-    def rob(self, nums):
+    def rob_dp(self, nums):
         if len(nums) <= 2:
             return max(nums)
         ar = [0] * len(nums)
@@ -12,7 +12,17 @@ class Solution:
         for i in range(2, len(nums)):
             ar[i] = max(nums[i]+ar[i-2], ar[i-1])
         return ar[-1]
-
+    def rob_greedy(self, nums):
+        prev = cur = 0
+        for num in nums:
+            temp = prev     # store previous iteration's prev
+            prev = cur      # current iteration's prev = last iteration's cur
+            # update cur 
+            cur = max(num+temp, prev) 
+            print("temp: ", temp)
+            print("prev: ", prev)
+            print("cur: ", cur)
+        return cur
 
 if __name__ == '__main__':
-    print(Solution().rob([1,2,3,1]))
+    print(Solution().rob_greedy([1,2,3,1]))
