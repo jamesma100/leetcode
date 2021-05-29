@@ -14,7 +14,7 @@ class Solution:
                     # mark True if string so far only has current word OR
                     # string scanned is longer than current word so check if 
                     # previous iteration of problem is true
-                    if i-len(word)+1 == 0 or dp[i-len(word)]:
+                    if i-len(word) < 0 or dp[i-len(word)]:
                         dp[i] = True
         return dp[-1]
 

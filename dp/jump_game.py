@@ -16,6 +16,7 @@ class Solution:
         return ar[0] # answer = possible to reach end from beginning?
 
     # greedy solution
+    # backwards
     # no need to store entire array
     # space O(1)
     # time O(n)
@@ -27,6 +28,15 @@ class Solution:
             if i + nums[i] >= last_pos:
                 last_pos = i
         return last_pos == 0
+    
+    # greedy forward solution
+    def canJumpForward(self, nums):
+        imax = 0
+        for i, num in enumerate(nums):
+            if i > imax:
+                return False
+            imax = max(imax, i + num)
+        return True
 
 if __name__ == '__main__':
     print(Solution().canJumpDP([3,2,1,0,4])) # false
