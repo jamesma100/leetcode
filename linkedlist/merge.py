@@ -3,7 +3,6 @@ class ListNode:
         self.val=val
         self.next=next
 
-
 class Solution:
     def mergeTwoLists(self, l1, l2):
         dummy = temp = ListNode(0)
