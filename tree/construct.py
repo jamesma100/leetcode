@@ -30,10 +30,16 @@ class Solution:
             if end < start:
                 return None
             nonlocal root_index
+            # find root value by index, create root node
             root_val = preorder[root_index]
             root = TreeNode(root_val)
+            # use root value and find position in inorder
             inorder_pos = dic[root_val]
             root_index+=1
+
+            root.left = helper(start, inorder_pos-1)
+            root.right = helper(inorder_pos+1, end)
+            return root
         
         dic = {}
         for i, val in enumerate(inorder):

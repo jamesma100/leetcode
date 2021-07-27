@@ -18,7 +18,7 @@ function visit(node n)
     for each node m with an edge from n to m do
         visit(m)
     remove temporary mark from n
-    mark n with permanent marrk
+    mark n with permanent mark
     add n to head of L
 
 
